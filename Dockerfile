@@ -1,6 +1,7 @@
 FROM lpicanco/java11-alpine
 
-#RUN sed -i 's/http:\/\/dl-cdn.alpinelinux.org\/alpine\//http:\/\/mirrors.ustc.edu.cn\/alpine\//g' /etc/apk/repositories
+RUN sed -i 's/http:\/\/dl-cdn.alpinelinux.org\/alpine\//http:\/\/mirrors.ustc.edu.cn\/alpine\//g' /etc/apk/repositories
+
 # ---not shown here---
 
 # Install language pack
@@ -17,8 +18,10 @@ RUN apk --no-cache add ca-certificates wget && \
 COPY ./locale.md /locale.md
 RUN cat locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.UTF-8 && \
     rm -rfv locale.md
+RUN apk add --update ttf-dejavu fontconfig
 # Set the lang, you can also specify it as as environment variable through docker-compose.yml
 ENV LANG=en_US.UTF-8 \
-    LANGUAGE=en_US.UTF-8
+    LANGUAGE=en_US.UTF-8 \
+    JVM_ARG "-Djava.security.egd=file:/dev/./urandom"
 
 # --- not show here---
