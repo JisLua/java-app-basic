@@ -21,7 +21,8 @@ RUN cat locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.U
 RUN apk add --update ttf-dejavu fontconfig
 # Set the lang, you can also specify it as as environment variable through docker-compose.yml
 ENV LANG=en_US.UTF-8 \
-    LANGUAGE=en_US.UTF-8 \
-    JVM_ARG "-Djava.security.egd=file:/dev/./urandom"
+    LANGUAGE=en_US.UTF-8
+
+ENV JVM_ARG "-Djava.security.egd=file:/dev/./urandom"
 
 # --- not show here---
