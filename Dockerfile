@@ -1,6 +1,6 @@
 FROM lpicanco/java11-alpine
 
-RUN sed -i 's/http:\/\/dl-cdn.alpinelinux.org\/alpine\//http:\/\/mirrors.ustc.edu.cn\/alpine\//g' /etc/apk/repositories
+#RUN sed -i 's/http:\/\/dl-cdn.alpinelinux.org\/alpine\//http:\/\/mirrors.ustc.edu.cn\/alpine\//g' /etc/apk/repositories
 # ---not shown here---
 
 # Install language pack
